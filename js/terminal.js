@@ -1,10 +1,16 @@
 const terminal = document.getElementById("terminal");
 
-const TYPE_SPEED = 35;
+const TYPE_SPEED = 40;
+const COMMAND_SPEED = 80;
 
 function sleep(ms)
 {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function scrollBottom()
+{
+    terminal.scrollTop = terminal.scrollHeight;
 }
 
 function createLine(text = "")
@@ -16,7 +22,7 @@ function createLine(text = "")
 
     terminal.appendChild(line);
 
-    terminal.scrollTop = terminal.scrollHeight;
+    scrollBottom();
 
     return line;
 }
@@ -25,11 +31,11 @@ async function typeLine(text, speed = TYPE_SPEED)
 {
     const line = createLine();
 
-    for (const c of text)
+    for(const c of text)
     {
         line.textContent += c;
 
-        terminal.scrollTop = terminal.scrollHeight;
+        scrollBottom();
 
         await sleep(speed);
     }
@@ -41,14 +47,25 @@ async function typePrompt(command)
 {
     const prompt = createLine("mustafa@lab:~$ ");
 
-    for (const c of command)
+    for(const c of command)
     {
         prompt.textContent += c;
 
-        terminal.scrollTop = terminal.scrollHeight;
+        scrollBottom();
 
-        await sleep(80);
+        await sleep(COMMAND_SPEED);
     }
+
+    await sleep(250);
+
+    return prompt;
+}
+
+async function loading(text)
+{
+    await typeLine(text);
+
+    await sleep(180);
 }
 
 async function boot()
@@ -59,60 +76,83 @@ async function boot()
 
     createLine();
 
-    await typeLine("Loading projects..............OK");
-    await sleep(250);
+    await loading("Loading projects..............OK");
 
-    await typeLine("Loading documentation.........OK");
-    await sleep(250);
+    await loading("Loading documentation.........OK");
 
-    await typeLine("Loading GitHub links..........OK");
-    await sleep(250);
+    await loading("Loading GitHub links..........OK");
 
-    await typeLine("Loading shell.................OK");
-
-    await sleep(600);
+    await loading("Loading shell.................OK");
 
     createLine();
+
+    await sleep(400);
 
     await typeLine("Welcome.");
 
-    await sleep(500);
+    createLine();
+
+    const date = new Date();
+
+    await typeLine("Last login: " + date.toString());
 
     createLine();
 
-    const now = new Date();
+    await sleep(800);
 
-    await typeLine("Last login: " + now.toString());
+    await runWhoAmI();
 
-    createLine();
+    await sleep(600);
 
-    await sleep(700);
+    await runLs();
 
+    await sleep(800);
+
+    createPrompt();
+}
+
+async function runWhoAmI()
+{
     await typePrompt("whoami");
 
-    await sleep(400);
-
     createLine("Mustafa Kabak");
+
     createLine("Embedded Software Engineer");
 
-    await sleep(700);
+    createLine("Linux | C++ | STM32 | Control Systems");
 
     createLine();
+}
 
+async function runLs()
+{
     await typePrompt("ls");
 
-    await sleep(400);
-
     createLine("projects");
-    createLine("resume");
-    createLine("contact");
+
+    createLine("about");
+
     createLine("skills");
 
-    await sleep(700);
+    createLine("resume");
+
+    createLine("contact");
 
     createLine();
+}
 
-    createLine("mustafa@lab:~$ █");
+function createPrompt()
+{
+    const prompt = document.createElement("div");
+
+    prompt.className = "line";
+
+    prompt.innerHTML =
+        `<span style="color:#39d353;">mustafa</span>@<span style="color:#58a6ff;">lab</span>:~$ <span class="cursor">█</span>`;
+
+    terminal.appendChild(prompt);
+
+    scrollBottom();
 }
 
 boot();
