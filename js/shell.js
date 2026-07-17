@@ -3,8 +3,10 @@ import { executeCommand } from "./commands.js";
 const terminal = document.getElementById("terminal");
 
 let currentLine = null;
-
 let currentInput = "";
+
+let history = [];
+let historyIndex = 0;
 
 export function initializeShell()
 {
@@ -34,7 +36,24 @@ function handleKey(event)
     if(!currentLine)
         return;
 
-    if(event.key.length === 1 && !event.ctrlKey && !event.metaKey)
+    /* Ctrl + L */
+
+    if(event.ctrlKey && event.key.toLowerCase() === "l")
+    {
+        event.preventDefault();
+
+        terminal.innerHTML = "";
+
+        createPrompt();
+
+        return;
+    }
+
+    /* Printable */
+
+    if(event.key.length === 1 &&
+       !event.ctrlKey &&
+       !event.metaKey)
     {
         currentInput += event.key;
 
@@ -54,18 +73,34 @@ function handleKey(event)
 
             updateInput();
 
-            event.preventDefault();
-
             break;
 
         case "Enter":
 
             submitCommand();
 
-            event.preventDefault();
+            break;
+
+        case "ArrowUp":
+
+            previousHistory();
+
+            break;
+
+        case "ArrowDown":
+
+            nextHistory();
+
+            break;
+
+        case "Tab":
+
+            autocomplete();
 
             break;
     }
+
+    event.preventDefault();
 }
 
 function updateInput()
@@ -83,7 +118,54 @@ function submitCommand()
         .querySelector(".cursor")
         .remove();
 
+    const command = currentInput.trim();
+
+    if(command !== "")
+    {
+        history.push(command);
+
+        historyIndex = history.length;
+
+        executeCommand(command);
+    }
+
     createPrompt();
+}
+
+function previousHistory()
+{
+    if(history.length === 0)
+        return;
+
+    historyIndex =
+        Math.max(0, historyIndex - 1);
+
+    currentInput =
+        history[historyIndex];
+
+    updateInput();
+}
+
+function nextHistory()
+{
+    if(history.length === 0)
+        return;
+
+    historyIndex =
+        Math.min(history.length,
+                 historyIndex + 1);
+
+    if(historyIndex === history.length)
+        currentInput = "";
+    else
+        currentInput = history[historyIndex];
+
+    updateInput();
+}
+
+function autocomplete()
+{
+    /* sonraki commit :) */
 }
 
 function scrollBottom()

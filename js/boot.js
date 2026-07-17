@@ -1,6 +1,6 @@
 const terminal = document.getElementById("terminal");
 
-const TYPE_SPEED = 30;
+const TYPE_SPEED = 18;
 
 function sleep(ms)
 {
@@ -13,16 +13,16 @@ function createLine(text = "")
 
     line.className = "line";
 
-    line.textContent = text;
-
     terminal.appendChild(line);
+
+    line.textContent = text;
 
     terminal.scrollTop = terminal.scrollHeight;
 
     return line;
 }
 
-async function typeLine(text)
+async function typeLine(text, speed = TYPE_SPEED)
 {
     const line = createLine();
 
@@ -32,43 +32,31 @@ async function typeLine(text)
 
         terminal.scrollTop = terminal.scrollHeight;
 
-        await sleep(TYPE_SPEED);
+        await sleep(speed);
     }
 }
 
 export async function boot()
 {
+    await typeLine("[ OK ] Loading profile");
+
+    await sleep(120);
+
+    await typeLine("[ OK ] Starting shell");
+
+    await sleep(180);
+
+    createLine();
+
     await typeLine("Portfolio OS v1.0");
 
-    createLine();
-
-    await sleep(300);
-
-    await typeLine("Welcome.");
+    await sleep(250);
 
     createLine();
 
-    await sleep(200);
-
-    createLine("Available commands");
+    await typeLine('Type "help" to begin.');
 
     createLine();
 
-    createLine("  help");
-
-    createLine("  whoami");
-
-    createLine("  ls");
-
-    createLine("  cd");
-
-    createLine("  resume");
-
-    createLine("  github");
-
-    createLine("  clear");
-
-    createLine();
-
-    await sleep(400);
+    await sleep(250);
 }

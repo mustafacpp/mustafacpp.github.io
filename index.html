@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -21,7 +22,7 @@
 
     <div class="background"></div>
 
-    <!-- Floating Terminal Button (hidden at startup) -->
+    <!-- Floating Terminal Button -->
 
     <button id="terminal-toggle">
 
@@ -29,17 +30,25 @@
 
     </button>
 
-    <!-- ================= HERO ================= -->
+    <!-- ===================================================== -->
+    <!-- HERO -->
+    <!-- ===================================================== -->
 
     <section class="hero">
 
-        <!-- Left -->
+        <!-- LEFT -->
 
         <div class="hero-left">
 
+            <p class="hello">
+
+                HELLO,
+
+            </p>
+
             <h1>
 
-                Mustafa Kabak
+                MUSTAFA KABAK
 
             </h1>
 
@@ -51,8 +60,13 @@
 
             <p class="hero-text">
 
-                I develop embedded software for Linux,
-                STM32 and autonomous systems.
+                B.Sc. graduate from Yildiz Technical University.
+
+                Incoming M.Sc. student at Istanbul Technical University.
+
+                Interested in Embedded Linux, Modern C++, Control Systems,
+
+                Radar Signal Processing and Autonomous Robotics.
 
             </p>
 
@@ -60,9 +74,11 @@
 
                 <span>Linux</span>
 
-                <span>C++</span>
+                <span>Modern C++</span>
 
                 <span>STM32</span>
+
+                <span>Embedded</span>
 
                 <span>Control</span>
 
@@ -78,14 +94,14 @@
 
                 </a>
 
-                <a href="assets/resume.pdf"
-                   target="_blank">
+                <a href="#contact">
 
-                    Resume
+                    Contact
 
                 </a>
 
                 <a href="https://github.com/mustafacpp"
+
                    target="_blank">
 
                     GitHub
@@ -96,12 +112,14 @@
 
         </div>
 
-        <!-- Right -->
+        <!-- RIGHT -->
 
         <div class="hero-right">
 
-            <div class="terminal"
-                 id="terminal-window">
+            <div
+                class="terminal"
+
+                id="terminal-window">
 
                 <div class="title-bar">
 
@@ -117,14 +135,16 @@
 
                     <div class="title">
 
-                        Portfolio OS
+                        mustafa@portfolio:~
 
                     </div>
 
                 </div>
 
-                <div id="terminal"
-                     class="terminal-body">
+                <div
+                    class="terminal-body"
+
+                    id="terminal">
 
                 </div>
 
@@ -134,7 +154,9 @@
 
     </section>
 
-    <!-- ================= ABOUT ================= -->
+    <!-- ===================================================== -->
+    <!-- ABOUT -->
+    <!-- ===================================================== -->
 
     <section id="about">
 
@@ -146,15 +168,15 @@
 
         <p>
 
-            Passionate about embedded systems,
-            modern C++, Linux,
-            control engineering and radar software.
+            More content will be added here.
 
         </p>
 
     </section>
 
-    <!-- ================= PROJECTS ================= -->
+    <!-- ===================================================== -->
+    <!-- PROJECTS -->
+    <!-- ===================================================== -->
 
     <section id="projects">
 
@@ -168,6 +190,7 @@
 
             <div
                 class="project-card"
+
                 id="radar">
 
                 <h3>
@@ -178,9 +201,9 @@
 
                 <p>
 
-                    Raspberry Pi 5 based
-                    high-speed UDP logger
-                    for TI mmWave radars.
+                    Raspberry Pi 5 high-speed logger
+
+                    for Texas Instruments mmWave radars.
 
                 </p>
 
@@ -188,6 +211,7 @@
 
             <div
                 class="project-card"
+
                 id="stm32">
 
                 <h3>
@@ -198,8 +222,7 @@
 
                 <p>
 
-                    Bare-metal CMSIS based
-                    peripheral drivers.
+                    CMSIS based bare-metal peripheral drivers.
 
                 </p>
 
@@ -207,6 +230,7 @@
 
             <div
                 class="project-card"
+
                 id="mavlink">
 
                 <h3>
@@ -217,8 +241,7 @@
 
                 <p>
 
-                    Linux MAVLink communication
-                    utilities.
+                    Linux based MAVLink communication framework.
 
                 </p>
 
@@ -226,6 +249,7 @@
 
             <div
                 class="project-card"
+
                 id="bldc">
 
                 <h3>
@@ -236,8 +260,7 @@
 
                 <p>
 
-                    Motor control algorithms
-                    and controller design.
+                    BLDC control algorithms and controller design.
 
                 </p>
 
@@ -247,7 +270,9 @@
 
     </section>
 
-    <!-- ================= SKILLS ================= -->
+    <!-- ===================================================== -->
+    <!-- SKILLS -->
+    <!-- ===================================================== -->
 
     <section id="skills">
 
@@ -259,7 +284,9 @@
 
     </section>
 
-    <!-- ================= CONTACT ================= -->
+    <!-- ===================================================== -->
+    <!-- CONTACT -->
+    <!-- ===================================================== -->
 
     <section id="contact">
 
@@ -271,7 +298,14 @@
 
     </section>
 
-    <script type="module" src="js/terminal.js"></script>
+    <script
+
+        type="module"
+
+        src="js/terminal.js">
+
+    </script>
+
 </body>
 
 </html>

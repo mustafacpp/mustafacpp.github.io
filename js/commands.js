@@ -1,10 +1,13 @@
+const terminal = document.getElementById("terminal");
+
 const commands =
 {
     help,
     whoami,
     ls,
     cd,
-    resume,
+    cat,
+    nano,
     github,
     clear
 };
@@ -25,17 +28,17 @@ export function executeCommand(input)
     if(commands[command])
     {
         commands[command](args);
-
-        return;
     }
+    else
+    {
+        print("");
 
-    print("");
+        print(`${command}: command not found`);
 
-    print("Command not found.");
+        print('Type "help" for available commands.');
 
-    print('Type "help" for available commands.');
-
-    print("");
+        print("");
+    }
 }
 
 function help()
@@ -54,7 +57,9 @@ function help()
 
     print("cd");
 
-    print("resume");
+    print("cat");
+
+    print("nano");
 
     print("github");
 
@@ -73,9 +78,15 @@ function whoami()
 
     print("");
 
-    print("Linux • Modern C++ • STM32");
+    print("Embedded Linux");
 
-    print("Control Systems • Radar");
+    print("Modern C++");
+
+    print("STM32");
+
+    print("Control Systems");
+
+    print("Radar Signal Processing");
 
     print("");
 }
@@ -103,6 +114,8 @@ function ls(args)
         print("skills");
 
         print("contact");
+
+        print("resume.txt");
     }
 
     print("");
@@ -135,47 +148,80 @@ function cd(args)
         return;
     }
 
-    print("Opening " + args[0] + "...");
+    print(`Opening ${args[0]}...`);
+
+    print("");
+
+    // Scroll functionality burada eklenecek.
+}
+
+function cat(args)
+{
+    print("");
+
+    if(args[0] === "resume.txt")
+    {
+        print("Mustafa Kabak");
+
+        print("Embedded Software Engineer");
+
+        print("");
+
+        print("Use:");
+
+        print("nano resume.txt");
+
+        print("to open the full resume.");
+
+    }
+    else
+    {
+        print("File not found.");
+    }
 
     print("");
 }
 
-function resume()
+function nano(args)
 {
-    window.open("assets/resume.pdf");
-
     print("");
 
-    print("Opening resume...");
+    if(args[0] === "resume.txt")
+    {
+        print("Opening resume...");
+
+        window.open("assets/resume.pdf", "_blank");
+    }
+    else
+    {
+        print("File not found.");
+    }
 
     print("");
 }
 
 function github()
 {
-    window.open("https://github.com/mustafacpp");
-
     print("");
 
     print("Opening GitHub...");
+
+    window.open(
+        "https://github.com/mustafacpp",
+        "_blank"
+    );
 
     print("");
 }
 
 function clear()
 {
-    document
-        .getElementById("terminal")
-        .innerHTML = "";
+    terminal.innerHTML = "";
 }
 
 function print(text)
 {
-    const terminal =
-        document.getElementById("terminal");
-
-    const line =
-        document.createElement("div");
+    const line = document.createElement("div");
 
     line.className = "line";
 
@@ -183,6 +229,5 @@ function print(text)
 
     terminal.appendChild(line);
 
-    terminal.scrollTop =
-        terminal.scrollHeight;
+    terminal.scrollTop = terminal.scrollHeight;
 }
