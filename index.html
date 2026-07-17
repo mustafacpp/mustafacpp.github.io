@@ -5,11 +5,13 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Mustafa Kabak | Embedded Software Engineer</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+          href="css/style.css">
 
 </head>
 
@@ -19,111 +21,257 @@
 
     <div class="background"></div>
 
-    <!-- Hero -->
+    <!-- Floating Terminal Button (hidden at startup) -->
+
+    <button id="terminal-toggle">
+
+        >_
+
+    </button>
+
+    <!-- ================= HERO ================= -->
 
     <section class="hero">
 
-        <div class="hero-content">
+        <!-- Left -->
 
-            <h1>Mustafa Kabak</h1>
+        <div class="hero-left">
 
-            <p class="subtitle">
+            <h1>
+
+                Mustafa Kabak
+
+            </h1>
+
+            <h2>
 
                 Embedded Software Engineer
 
+            </h2>
+
+            <p class="hero-text">
+
+                I develop embedded software for Linux,
+                STM32 and autonomous systems.
+
             </p>
 
+            <div class="tech-stack">
+
+                <span>Linux</span>
+
+                <span>C++</span>
+
+                <span>STM32</span>
+
+                <span>Control</span>
+
+                <span>Radar</span>
+
+            </div>
+
+            <div class="hero-buttons">
+
+                <a href="#projects">
+
+                    Projects
+
+                </a>
+
+                <a href="assets/resume.pdf"
+                   target="_blank">
+
+                    Resume
+
+                </a>
+
+                <a href="https://github.com/mustafacpp"
+                   target="_blank">
+
+                    GitHub
+
+                </a>
+
+            </div>
+
         </div>
 
-        <!-- Terminal -->
+        <!-- Right -->
 
-        <div class="terminal">
+        <div class="hero-right">
 
-            <div class="title-bar">
+            <div class="terminal"
+                 id="terminal-window">
 
-                <div class="buttons">
+                <div class="title-bar">
 
-                    <span class="close"></span>
+                    <div class="buttons">
 
-                    <span class="minimize"></span>
+                        <span class="close"></span>
 
-                    <span class="maximize"></span>
+                        <span class="minimize"></span>
+
+                        <span class="maximize"></span>
+
+                    </div>
+
+                    <div class="title">
+
+                        Portfolio OS
+
+                    </div>
 
                 </div>
 
-                <div class="title">
-
-                    Portfolio OS
+                <div id="terminal"
+                     class="terminal-body">
 
                 </div>
 
             </div>
-
-            <div
-                class="terminal-body"
-                id="terminal">
-
-            </div>
-
-        </div>
-
-        <div class="scroll-indicator">
-
-            ↓ Explore
 
         </div>
 
     </section>
 
-    <!-- About -->
+    <!-- ================= ABOUT ================= -->
 
     <section id="about">
 
-        <h2>About</h2>
+        <h2>
+
+            About
+
+        </h2>
 
         <p>
 
-            I develop embedded software for Linux and
-            microcontrollers with a focus on C++, control systems,
-            robotics, radar signal processing and high-performance
-            software architecture.
+            Passionate about embedded systems,
+            modern C++, Linux,
+            control engineering and radar software.
 
         </p>
 
     </section>
 
-    <!-- Projects -->
+    <!-- ================= PROJECTS ================= -->
 
     <section id="projects">
 
-        <h2>Projects</h2>
+        <h2>
+
+            Projects
+
+        </h2>
 
         <div class="project-grid">
 
-            <!-- JavaScript will populate this later -->
+            <div
+                class="project-card"
+                id="radar">
+
+                <h3>
+
+                    Radar Logger
+
+                </h3>
+
+                <p>
+
+                    Raspberry Pi 5 based
+                    high-speed UDP logger
+                    for TI mmWave radars.
+
+                </p>
+
+            </div>
+
+            <div
+                class="project-card"
+                id="stm32">
+
+                <h3>
+
+                    STM32 Drivers
+
+                </h3>
+
+                <p>
+
+                    Bare-metal CMSIS based
+                    peripheral drivers.
+
+                </p>
+
+            </div>
+
+            <div
+                class="project-card"
+                id="mavlink">
+
+                <h3>
+
+                    MAVLink Interface
+
+                </h3>
+
+                <p>
+
+                    Linux MAVLink communication
+                    utilities.
+
+                </p>
+
+            </div>
+
+            <div
+                class="project-card"
+                id="bldc">
+
+                <h3>
+
+                    BLDC Motor Control
+
+                </h3>
+
+                <p>
+
+                    Motor control algorithms
+                    and controller design.
+
+                </p>
+
+            </div>
 
         </div>
 
     </section>
 
-    <!-- Skills -->
+    <!-- ================= SKILLS ================= -->
 
     <section id="skills">
 
-        <h2>Skills</h2>
+        <h2>
+
+            Skills
+
+        </h2>
 
     </section>
 
-    <!-- Contact -->
+    <!-- ================= CONTACT ================= -->
 
     <section id="contact">
 
-        <h2>Contact</h2>
+        <h2>
+
+            Contact
+
+        </h2>
 
     </section>
 
-    <script src="js/terminal.js"></script>
-
+    <script type="module" src="js/terminal.js"></script>
 </body>
 
 </html>
