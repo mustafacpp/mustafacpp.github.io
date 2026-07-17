@@ -8,14 +8,13 @@ body {
 
     background: #1e1e1e;
 
+    height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
-    height: 100vh;
-
     font-family: "Ubuntu Mono", monospace;
-
 }
 
 .terminal {
@@ -29,8 +28,10 @@ body {
 
     overflow: hidden;
 
-    box-shadow: 0px 20px 60px rgba(0,0,0,.55);
+    box-shadow: 0 20px 60px rgba(0,0,0,.6);
 
+    display: flex;
+    flex-direction: column;
 }
 
 .title-bar {
@@ -43,104 +44,113 @@ body {
     align-items: center;
 
     position: relative;
-
 }
 
-.buttons{
+.buttons {
 
-    display:flex;
-    gap:8px;
+    display: flex;
 
-    margin-left:15px;
+    gap: 8px;
 
+    margin-left: 15px;
 }
 
-.buttons span{
+.buttons span {
 
-    width:14px;
-    height:14px;
+    width: 14px;
+    height: 14px;
 
-    border-radius:50%;
+    border-radius: 50%;
 }
 
-.close{
+.close {
 
-    background:#ff5f56;
-
+    background: #ff5f56;
 }
 
-.minimize{
+.minimize {
 
-    background:#ffbd2e;
-
+    background: #ffbd2e;
 }
 
-.maximize{
+.maximize {
 
-    background:#27c93f;
-
+    background: #27c93f;
 }
 
-.title{
+.title {
 
-    position:absolute;
+    position: absolute;
 
-    left:50%;
-    transform:translateX(-50%);
+    left: 50%;
 
-    color:#d7d7d7;
+    transform: translateX(-50%);
 
-    font-size:18px;
+    color: #d7d7d7;
 
+    font-size: 16px;
 }
 
-.terminal-body{
+.terminal-body {
 
-    padding:20px;
+    flex: 1;
 
-    color:white;
+    padding: 20px;
 
-    font-size:28px;
+    color: #f0f0f0;
 
+    font-size: 22px;
+
+    overflow-y: auto;
+
+    line-height: 1.5;
 }
 
-.user{
+.line {
 
-    color:#3ddc84;
+    white-space: pre;
 
-    font-weight:bold;
-
+    margin-bottom: 2px;
 }
 
-.host{
+.user {
 
-    color:#57a6ff;
+    color: #3ddc84;
 
-    font-weight:bold;
-
+    font-weight: bold;
 }
 
-.cursor{
+.host {
 
-    display:inline-block;
+    color: #57a6ff;
 
-    width:14px;
-    height:30px;
+    font-weight: bold;
+}
 
-    background:white;
+.cursor {
 
-    margin-left:6px;
+    display: inline-block;
+
+    width: 12px;
+
+    height: 24px;
+
+    background: white;
 
     animation: blink 1s infinite;
 
+    vertical-align: middle;
 }
 
-@keyframes blink{
+@keyframes blink {
 
-    50%{
+    50% {
 
-        opacity:0;
-
+        opacity: 0;
     }
+}
 
+::-webkit-scrollbar {
+
+    display: none;
 }
